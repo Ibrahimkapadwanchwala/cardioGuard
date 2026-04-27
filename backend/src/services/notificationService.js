@@ -19,6 +19,9 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+console.log(process.env.EMAIL_USER + process.env.EMAIL_PASS);
+
+
 // 📧 Send Alert Email
 export const sendAlertEmail = async ({
   to,
@@ -31,6 +34,11 @@ export const sendAlertEmail = async ({
 }) => {
   try {
     const locationLink = `https://maps.google.com/?q=${lat},${lng}`;
+
+    console.log("EMAIL ENV:", {
+  user: process.env.EMAIL_USER,
+  pass: process.env.EMAIL_PASS
+});
 
     // 🔥 Dynamic subject
     const subject =

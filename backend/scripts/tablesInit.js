@@ -2,6 +2,8 @@ import mysql from "mysql2/promise";
 import dotenv from "dotenv";
 
 dotenv.config();
+console.log(process.env.DB_PASS);
+
 
 export const initTables = async () => {
   const connection = await mysql.createConnection({
@@ -15,7 +17,8 @@ export const initTables = async () => {
     CREATE TABLE IF NOT EXISTS users (
       id INT PRIMARY KEY AUTO_INCREMENT,
       name VARCHAR(100),
-      email VARCHAR(100)
+      email VARCHAR(100),
+      password VARCHAR(255)
     )
   `);
 
